@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    enum Tab: Hashable { case statistics, home }
+    @State private var selection: Tab = .home
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView(selection: $selection) {
+            NavigationStack {
+                StatisticsView()
+            }
+            .tabItem {
+                Image("Chart")
+                    .renderingMode(selection == .statistics ? .template : .original)
+            }
+            .tag(Tab.statistics)
+
+            NavigationStack {
+                HomeView()
+            }
+            .tabItem {
+                Image("Home")
+                    .renderingMode(selection == .home ? .template : .original)
+            }
+            .tag(Tab.home)
         }
-        .padding()
+        .tint(selection == .home ? Color("BrandPrimary") : Color("Tertiary"))
     }
 }
 
