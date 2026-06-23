@@ -9,13 +9,38 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack(spacing: 16) {
-            Image(systemName: "house.fill")
-                .font(.system(size: 48))
-                .foregroundStyle(.tint)
-            Text("Welcome to Home")
-                .typography(.headlineLarge)
+        VStack(alignment: .leading) {
+            Text("ScribbleDash")
+                .typography(.headlineMedium)
+                .foregroundStyle(.onBackground)
+            
+            VStack {
+                Text("Start drawing!")
+                    .typography(.headlineLarge)
+                    .foregroundStyle(.onBackground)
+                
+                Text("Select game mode")
+                    .typography(.bodyMedium)
+                    .foregroundStyle(.onBackground)
+                
+                GameModeCardView(
+                    image: .oneRoundWonder,
+                    borderColor: .success,
+                    gameTitle: "One Round Wonder",
+                    onClick: {
+                        print("tapped")
+                    }
+                )
+                .padding(.top, 20)
+            }
+            .padding(.top, 80)
+            
+            Spacer()
         }
-        .padding()
+        .padding(.horizontal, 16)
     }
+}
+
+#Preview {
+    HomeView()
 }
