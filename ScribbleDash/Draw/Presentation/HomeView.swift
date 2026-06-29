@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var selectedGameMode: GameMode? = nil
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("ScribbleDash")
@@ -26,18 +28,21 @@ struct HomeView: View {
                 GameModeCardView(
                     image: .oneRoundWonder,
                     borderColor: .success,
-                    gameTitle: "One Round Wonder",
-                    onClick: {
-                        print("tapped")
-                    }
-                )
+                    gameTitle: "One Round Wonder"
+                ) {
+                    selectedGameMode = .oneRoundWonder
+                }
                 .padding(.top, 20)
+                .navigationDestination(item: $selectedGameMode) { gameMode in
+                    DifficultySelectionView(gameMode: gameMode)
+                }
             }
             .padding(.top, 80)
             
             Spacer()
         }
         .padding(.horizontal, 16)
+        .background(AppGradients.backgroundGradient)
     }
 }
 
