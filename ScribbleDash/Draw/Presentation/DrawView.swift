@@ -9,24 +9,52 @@ import SwiftUI
 
 struct DrawView: View {
     let difficulty: Difficulty
-    
+
+    @State private var viewModel = DrawViewModel()
+
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            Color.background.ignoresSafeArea()
-            
-            VStack {
-                Text("Ready. set ....")
+        ZStack(alignment: .topTrailing) {
+            AppGradients.backgroundGradient
+                .ignoresSafeArea()
+
+            VStack(spacing: 0) {
+                Text("Time to draw!")
                     .typography(.displayMedium)
-                
-                Text("Selected difficulty: \(difficulty.title)")
+                    .foregroundStyle(.onBackground)
+                    .padding(.bottom, 32)
+
+                CanvasView(viewModel: viewModel)
+                    .padding(.horizontal, 16)
+
+                Spacer()
+
+                bottomBar
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 16)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
+        .toolbarColorScheme(.light, for: .navigationBar)
+    }
+
+    private var bottomBar: some View {
+        HStack(spacing: 16) {
+            ControlButtonView(image: .reply, enabled: viewModel.canUndo) {
+                viewModel.undo()
+            }
+
+            ControlButtonView(image: .forward, enabled: viewModel.canRedo) {
+                viewModel.redo()
+            }
+
+            Spacer()
+
+            AppButtonView(text: "CLEAR CANVAS", enabled: viewModel.canClear, fillColor: .success) {
+                viewModel.clear()
+            }
         }
     }
 }
 
 #Preview {
-    DrawView(
-        difficulty: Difficulty.beginner
-    )
+    DrawView(difficulty: .beginner)
 }

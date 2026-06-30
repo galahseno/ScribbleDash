@@ -42,6 +42,7 @@ struct DifficultySelectionView: View {
         .padding(.top, 16)
         .background(Color.background)
         .toolbar(.hidden, for: .tabBar)
+        .toolbarColorScheme(.light, for: .navigationBar)
     }
 }
 
