@@ -14,9 +14,6 @@ struct DrawView: View {
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            AppGradients.backgroundGradient
-                .ignoresSafeArea()
-
             VStack(spacing: 0) {
                 Text("Time to draw!")
                     .typography(.displayMedium)
@@ -33,7 +30,7 @@ struct DrawView: View {
                     .padding(.bottom, 16)
             }
         }
-        .toolbarColorScheme(.light, for: .navigationBar)
+        .background(Color.background)
     }
 
     private var bottomBar: some View {
@@ -45,7 +42,7 @@ struct DrawView: View {
             ControlButtonView(image: .forward, enabled: viewModel.canRedo) {
                 viewModel.redo()
             }
-
+            
             Spacer()
 
             AppButtonView(text: "CLEAR CANVAS", enabled: viewModel.canClear, fillColor: .success) {

@@ -19,7 +19,8 @@ import SwiftUI
 struct CanvasView: View {
     @Bindable var viewModel: DrawViewModel
 
-    private let strokeColor: Color = PenColors.midnightBlack
+    private let strokeColor: Color = .onSurface
+    private let backgroundColor: Color = .background
     private let strokeWidth: CGFloat = 8
     private let gridColor: Color = Color(.onSurfaceVar)
 
@@ -33,7 +34,7 @@ struct CanvasView: View {
             stroke(points: viewModel.currentPoints, in: context)
         }
         .aspectRatio(55.0 / 56.0, contentMode: .fit)
-        .background(CanvasColors.white)
+        .background(backgroundColor)
         .clipShape(RoundedRectangle(cornerRadius: 24))
         .overlay(
             RoundedRectangle(cornerRadius: 24)
@@ -55,7 +56,7 @@ struct CanvasView: View {
         .padding(12)
         .background(
             RoundedRectangle(cornerRadius: 36)
-                .fill(CanvasColors.white)
+                .fill(backgroundColor)
         )
         .shadow(color: Color(hexARGB: 0x1F726558), radius: 12, x: 0, y: 8)
     }

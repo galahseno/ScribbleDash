@@ -17,5 +17,6 @@ struct StatisticsView: View {
                 .font(.title2)
         }
         .padding()
+        .background(AppGradients.backgroundGradient)
     }
 }
