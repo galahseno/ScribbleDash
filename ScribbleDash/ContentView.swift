@@ -17,7 +17,7 @@ struct ContentView: View {
                 StatisticsView()
             }
             .tabItem {
-                Image("Chart")
+                Image(.chart)
                     .renderingMode(selection == .statistics ? .template : .original)
             }
             .tag(Tab.statistics)
@@ -26,12 +26,12 @@ struct ContentView: View {
                 HomeView()
             }
             .tabItem {
-                Image("Home")
+                Image(.home)
                     .renderingMode(selection == .home ? .template : .original)
             }
             .tag(Tab.home)
         }
-        .tint(selection == .home ? Color("BrandPrimary") : Color("Tertiary"))
+        .tint(selection == .home ? Color(.brandPrimary) : Color(.tertiary))
     }
 }
 
