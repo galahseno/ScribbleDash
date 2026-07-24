@@ -29,6 +29,11 @@
 			path = ScribbleDash;
 			sourceTree = "<group>";
 		};
+		72580B1830135B0200C8B02A /* Assets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Assets;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			children = (
 				198DCBA62FD85399002B82AE /* ScribbleDash */,
 				198DCBA52FD85399002B82AE /* Products */,
+				72580B1830135B0200C8B02A /* Assets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +81,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				198DCBA62FD85399002B82AE /* ScribbleDash */,
+				72580B1830135B0200C8B02A /* Assets */,
 			);
 			name = ScribbleDash;
 			packageProductDependencies = (
