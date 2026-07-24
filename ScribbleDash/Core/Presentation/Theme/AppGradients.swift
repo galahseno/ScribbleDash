@@ -11,8 +11,8 @@ public enum AppGradients {
     public static var backgroundGradient: LinearGradient {
         LinearGradient(
             colors: [
-                Color(hexARGB: 0xFFFEFAF6),
-                Color(hexARGB: 0xFFFFF1E2),
+                Color(.background),
+                Color(.backgroundGradientEnd),
             ],
             startPoint: .top,
             endPoint: .bottom
